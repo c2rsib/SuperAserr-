@@ -1,32 +1,34 @@
-// USUARIO Y CLAVE ADMIN
+// --- CREDENCIALES ADMIN ---
 const ADMIN_USUARIO = "admin";
 const ADMIN_CLAVE = "clave123";
 
-// PRODUCTOS SIMPLES
+// --- PRODUCTOS DISPONIBLES ---
 const productos = [
-  { id: 1, nombre: "Arroz Diana 1kg", precio: 1200 },
+  { id: 1, nombre: "Pan Bimbo Integral", precio: 1350 },
   { id: 2, nombre: "Leche Dos Pinos 1L", precio: 950 },
-  { id: 3, nombre: "Pan Bimbo Integral", precio: 1350 },
-  { id: 4, nombre: "Café 1820 500g", precio: 2500 }
+  { id: 3, nombre: "Arroz Diana 1kg", precio: 1200 },
+  { id: 4, nombre: "Café 1820 500g", precio: 2500 },
+  { id: 5, nombre: "Chocolate Nestlé", precio: 1800 },
 ];
 
 let carrito = [];
 
+// --- INICIAR SESIÓN ---
 function iniciarSesion() {
-  const usuario = document.getElementById("usuario").value;
-  const clave = document.getElementById("clave").value;
+  const usuario = document.getElementById("usuario").value.trim();
+  const clave = document.getElementById("clave").value.trim();
   const errorMsg = document.getElementById("login-error");
 
   if (usuario === ADMIN_USUARIO && clave === ADMIN_CLAVE) {
     document.getElementById("login").classList.add("hidden");
     document.getElementById("app").classList.remove("hidden");
     mostrarSeccion("inicio");
-    cargarProductos();
   } else {
     errorMsg.textContent = "Usuario o contraseña incorrectos.";
   }
 }
 
+// --- CAMBIO DE SECCIONES ---
 function mostrarSeccion(id) {
   ["inicio", "productos", "carrito"].forEach(seccion => {
     document.getElementById(seccion).classList.add("hidden");
@@ -34,35 +36,22 @@ function mostrarSeccion(id) {
   document.getElementById(id).classList.remove("hidden");
 }
 
-function cargarProductos() {
-  const contenedor = document.getElementById("productos-lista");
-  contenedor.innerHTML = "";
-
-  productos.forEach(prod => {
-    const div = document.createElement("div");
-    div.className = "producto";
-    div.innerHTML = `
-      <div class="imagen-producto">
-        <!-- Aquí puedes colocar una imagen -->
-      </div>
-      <h3>${prod.nombre}</h3>
-      <p>₡${prod.precio.toLocaleString()}</p>
-      <button onclick="agregarAlCarrito(${prod.id})">Agregar al carrito</button>
-    `;
-    contenedor.appendChild(div);
-  });
-}
-
+// --- AGREGAR AL CARRITO ---
 function agregarAlCarrito(id) {
   const producto = productos.find(p => p.id === id);
-  carrito.push(producto);
-  actualizarCarrito();
+  if (producto) {
+    carrito.push(producto);
+    actualizarCarrito();
+    alert(`${producto.nombre} se agregó al carrito 🛒`);
+  }
 }
 
+// --- ACTUALIZAR CARRITO ---
 function actualizarCarrito() {
   document.getElementById("carrito-cantidad").textContent = carrito.length;
 }
 
+// --- MOSTRAR CARRITO ---
 function mostrarCarrito() {
   mostrarSeccion("carrito");
 
@@ -78,9 +67,36 @@ function mostrarCarrito() {
   let total = 0;
   carrito.forEach((prod, index) => {
     total += prod.precio;
-    const p = document.createElement("p");
-    p.textContent = `${prod.nombre} - ₡${prod.precio.toLocaleString()}`;
-    contenedor.appendChild(p);
+
+    const item = document.createElement("div");
+    item.className = "item-carrito";
+    item.innerHTML = `
+      <p>${prod.nombre} - ₡${prod.precio.toLocaleString()}</p>
+      <button class="btn" onclick="eliminarDelCarrito(${index})">Eliminar</button>
+    `;
+    contenedor.appendChild(item);
   });
 
+  document.getElementById("carrito-total").textContent = "Total: ₡" + total.toLocaleString();
+}
+
+// --- ELIMINAR PRODUCTO DEL CARRITO ---
+function eliminarDelCarrito(index) {
+  carrito.splice(index, 1);
+  actualizarCarrito();
+  mostrarCarrito();
+}
+
+// --- FINALIZAR COMPRA ---
+function finalizarCompra() {
+  if (carrito.length === 0) {
+    alert("El carrito está vacío.");
+    return;
+  }
+  alert("¡Compra realizada con éxito! 🎉");
+  carrito = [];
+  actualizarCarrito();
+  mostrar
+}
   document.getElementById("carrito-total").text}
+
