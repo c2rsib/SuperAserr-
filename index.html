@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Supermercado Aserrí</title>
- <link rel="stylesheet" href="/ejercicio 1/styles.css"
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -13,10 +13,10 @@
     <h2>Iniciar Sesión</h2>
     <input type="text" id="usuario" placeholder="Usuario">
     <input type="password" id="clave" placeholder="Contraseña">
-    <button onclick="iniciarSesion()">Ingresar</button>
+    <button class="btn" onclick="iniciarSesion()">Ingresar</button>
     <p id="login-error" class="error-msg"></p>
   </div>
-,
+
   <!-- CONTENIDO PRINCIPAL -->
   <div id="app" class="hidden">
 
@@ -27,7 +27,7 @@
         <ul class="nav-links">
           <li><a href="#" onclick="mostrarSeccion('inicio')">Inicio</a></li>
           <li><a href="#" onclick="mostrarSeccion('productos')">Productos</a></li>
-          <li><a href="#" onclick="mostrarCarrito()">Carrito (<span id="carrito-cantidad">0</span>)</a></li>
+          <li><a href="#" onclick="mostrarCarrito()">🛒 Carrito (<span id="carrito-cantidad">0</span>)</a></li>
         </ul>
       </nav>
     </header>
@@ -45,7 +45,43 @@
       <div class="contenedor">
         <h2>Productos Disponibles</h2>
         <div class="productos-grid" id="productos-lista">
-          <!-- Productos generados desde JS -->
+
+          <!-- PRODUCTOS VISIBLES -->
+          <div class="producto">
+            <div class="imagen">🥖</div>
+            <h3>Pan Bimbo Integral</h3>
+            <p>₡1,350</p>
+            <button class="btn" onclick="agregarAlCarrito(1)">Agregar al carrito</button>
+          </div>
+
+          <div class="producto">
+            <div class="imagen">🥛</div>
+            <h3>Leche Dos Pinos 1L</h3>
+            <p>₡950</p>
+            <button class="btn" onclick="agregarAlCarrito(2)">Agregar al carrito</button>
+          </div>
+
+          <div class="producto">
+            <div class="imagen">🍚</div>
+            <h3>Arroz Diana 1kg</h3>
+            <p>₡1,200</p>
+            <button class="btn" onclick="agregarAlCarrito(3)">Agregar al carrito</button>
+          </div>
+
+          <div class="producto">
+            <div class="imagen">☕</div>
+            <h3>Café 1820 500g</h3>
+            <p>₡2,500</p>
+            <button class="btn" onclick="agregarAlCarrito(4)">Agregar al carrito</button>
+          </div>
+
+          <div class="producto">
+            <div class="imagen">🍫</div>
+            <h3>Chocolate Nestlé</h3>
+            <p>₡1,800</p>
+            <button class="btn" onclick="agregarAlCarrito(5)">Agregar al carrito</button>
+          </div>
+
         </div>
       </div>
     </section>
@@ -56,11 +92,18 @@
         <h2>Carrito de Compras</h2>
         <div id="carrito-items"></div>
         <p id="carrito-total">Total: ₡0</p>
+        <button class="btn comprar-btn" onclick="finalizarCompra()">Finalizar Compra</button>
       </div>
     </section>
 
+    <!-- FOOTER -->
+    <footer>
+      <p>© 2025 Supermercado Aserrí — Todos los derechos reservados</p>
+    </footer>
+
   </div>
 
-  <script src="/ejercicio 1/scripts.js">
+  <script src="scripts.js"></script>
 </body>
 </html>
+
