@@ -1,0 +1,144 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supermercado Aserrí</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo="> <!-- icono pequeño placeholder -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="" alt="Logo Supermercado Aserrí" class="logo" />
+        <h1>Supermercado <span>Aserrí</span></h1>
+      </div>
+
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#ofertas">Ofertas</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#carrito" class="cart-btn" aria-label="Ver carrito">🛒 <span class="cart-count">0</span></a>
+        <a href="#login" class="login-link">Iniciar sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h2>Bienvenido a Supermercado Aserrí</h2>
+        <p>Calidad y precios cerca de ti. Productos frescos, ofertas semanales y atención amable.</p>
+        <a href="#productos" class="btn">Ver productos</a>
+      </div>
+    </section>
+
+    <section id="productos" class="container productos-section">
+      <h3>Productos destacados</h3>
+      <div class="productos-grid">
+        <!-- Producto 1 -->
+        <article class="producto">
+          <div class="producto-img">🍎</div>
+          <h4>Manzanas (1 kg)</h4>
+          <p class="price">₡1,500</p>
+          <button class="add-cart">Añadir al carrito</button>
+        </article>
+
+        <!-- Producto 2 -->
+        <article class="producto">
+          <div class="producto-img">🥛</div>
+          <h4>Leche entera (1 L)</h4>
+          <p class="price">₡900</p>
+          <button class="add-cart">Añadir al carrito</button>
+        </article>
+
+        <!-- Producto 3 -->
+        <article class="producto">
+          <div class="producto-img">🍞</div>
+          <h4>Pan artesanal</h4>
+          <p class="price">₡650</p>
+          <button class="add-cart">Añadir al carrito</button>
+        </article>
+
+        <!-- Producto 4 -->
+        <article class="producto">
+          <div class="producto-img">🥩</div>
+          <h4>Carne de res (500 g)</h4>
+          <p class="price">₡4,200</p>
+          <button class="add-cart">Añadir al carrito</button>
+        </article>
+
+        <!-- Producto 5 -->
+        <article class="producto">
+          <div class="producto-img">🍝</div>
+          <h4>Pasta (500 g)</h4>
+          <p class="price">₡700</p>
+          <button class="add-cart">Añadir al carrito</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="ofertas" class="container ofertas">
+      <h3>Ofertas de la semana</h3>
+      <div class="ofertas-list">
+        <div class="oferta-item">
+          <h4>Arroz - 30% off</h4>
+          <p>Arroz grano largo 2 kg — oferta válida hasta agotar existencias.</p>
+        </div>
+        <div class="oferta-item">
+          <h4>Jabón en barra - 2x1</h4>
+          <p>Promoción en jabón de tocador marca local.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="container contacto">
+      <h3>Contacto</h3>
+      <p>Teléfono: 8888-8888 · Dirección: Aserrí, Costa Rica</p>
+      <form class="contact-form" action="#" onsubmit="return false;">
+        <label>
+          Tu nombre
+          <input type="text" placeholder="Nombre" />
+        </label>
+        <label>
+          Mensaje
+          <textarea placeholder="Escribe tu mensaje..."></textarea>
+        </label>
+        <button class="btn" type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Supermercado Aserrí — Todos los derechos reservados.</p>
+      <small>Hecho con ♥ en Aserrí</small>
+    </div>
+  </footer>
+
+  <script>
+    // Pequeño script inline para el año del pie de página y para simular contador de carrito.
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const cartCountEl = document.querySelector('.cart-count');
+    const addButtons = document.querySelectorAll('.add-cart');
+    let count = 0;
+    addButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        count += 1;
+        cartCountEl.textContent = count;
+        btn.textContent = 'Añadido';
+        setTimeout(() => btn.textContent = 'Añadir al carrito', 1200);
+      });
+    });
+  </script>
+</body>
+</html>
