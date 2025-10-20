@@ -157,3 +157,13 @@ footer {
   margin-top: 40px;
   font-size: 0.9em;
 }
+
+.btn-secundario {
+  background-color: #ccc;
+  color: #333;
+  margin-top: 10px;
+}
+
+.btn-secundario:hover {
+  background-color: #bbb;
+}
